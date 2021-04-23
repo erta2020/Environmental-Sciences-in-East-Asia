@@ -138,7 +138,7 @@ Everyone in the world!
 
 
 
-\chapter{Author Guide}\label{ch:guide}
+\chapter{\LaTeX Guide}\label{ch:guide}
 
 \subsection*{Why Learn \LaTeX?}
 
@@ -173,13 +173,13 @@ To create effective graphics, each chapter will have a rchunk that creates a gra
 
 Because this is an ongoing project, you should record your contribution to each chapter -- but also let go of these contributions at some point; Others might revise and their authorship might take some precedence, so you should both invest in the product but also be willing to detach from the final outcome as others contribute. This will feel uncomfortable at times, but please note from the beginning this is a social process and as such subject to negotiation. Please be generous to the authors that laid the foundation and be respectful of those that follow. 
 
-\section{Setting Up Book Project--Type Setting w/ \LaTeX}
+\section{Setting Up Book Project--Type Setting w/ \LaTeX}\label{sec:settingup}
 
-\subsection*{Latex Book Class}
+\subsection{Latex Book Class}
 
 Currently, the text is written using the standard book class. %However, in 2019, I (Los Huertos) will convert the format to a Tufte book class. 
 
-\subsection*{Structuring the Text with Nested Hierarchies}
+\subsection{Structuring the Text with Nested Hierarchies}
 
 Contributors divide their contributions into sections and subsections. This format allows a consistent approach to structuring the text and forcing themes to be organized in blocks that can be used to organize the overall text. We use section, subsection, and subsubsection to break up the topic into bite sizes. 
 
@@ -189,7 +189,7 @@ NOTE: for each nested level, it MUST be followed by the lowest level in the sect
 
 NOTE: We may dispense with subsubsections in the future to provide a less blocky structure, but for now they remain useful. 
 
-\subsection*{Font Changes}
+\subsection{Font Changes}
 
 We can use various methods to alter the typeset: \emph{Emphasize}, \textbf{Bold}, \textit{Italics}, and \textsl{Slanted}. We can also typeset \textrm{Roman}, \textsf{Sans Serif}, \textsc{Small Caps}, and \texttt{Typewriter} texts.  Look online to see the commands to accomplish these changes. 
 
@@ -221,27 +221,44 @@ LaTeX is widely used in academia for the communication and publication of scient
 Use the Verbatim environment if you want \LaTeX\ to preserve spacing, perhaps when
 including a fragment from a program such as:
 \begin{verbatim}
-#include <iostream>         // < > is used for standard libraries.
-void main(void)             // ''main'' method always called first.
-{
- cout << ''This is a message.'';
-                            // Send to output stream.
-}
+#read csv data  // read data into R
+my.dataframe <- read.csv(file.choose())   // read data from a popup window.
+
+str(my.dataframe) // display data structure
+
 \end{verbatim}
 (After selecting the text click on Insert, Code Environments, Code.)
 
 
-\subsection*{Mathematics and Text}
+\subsection{Mathematics and Specialized Characters}\label{sub:mathchar}
 
-\subsubsection{Warning: Special Characters}
+\subsubsection*{Warning: Special Characters}
 
-When you use percent and ampersand symbols, hash tags, and other non-standard ASCII characters, \LaTeX will be very uncooperative. So, do yourself a favor and make sure you understand that these are used for special typesetting functions. To use them you have to ``escape'' and use commands to get them to do what you might usually expect!  \% \# \& \`e \~n `` and '' to show a few that do not reflect the key stroke you might expect. 
+When you use percent and ampersand symbols, hash tags, and other non-standard ASCII characters, \LaTeX will be very uncooperative. \LaTeX~doesn't like a range of characters or they reserved for special behavior. So, do yourself a favor and make sure you understand that these are used for special typesetting functions. To use them you have to ``escape'' and use commands to get them to do what you might usually expect!  
 
-\LaTeX doesn't like a range of characters or they reserved for special behavior...
+The following symbols \$, \%, \#, \&, \`e, \~n, `` and '' do not reflect the key stroke you might expect. 
 
-For example, the \# is used for tabs in a table environment. \% is used to make comments, thus stuff behind a \% is ignored. There are lots of others, but these come up the most.
+For example, the \& is used for tabs in a table environment. \% is used to make comments, thus stuff behind a \% is ignored. There are lots of others, but these come up the most. If you want to show use the ampersand or one of these characters, put a backslash in front of the dollar sybmol, e.g. \textbackslash\$. See Table \ref{tab:tableofsymbols}.
 
-\subsubsection{Creating equations}
+If you want to a superscript (raised to 3nd power), we can create text in math mode, with \$ to start and end the text in math mode, e.g. m$^3$ is written in \LaTeX as m\$\^{}3\$. A subscript uses an underscore, x\$\_1\$ creates x$_1$. If you need more than one character as a subscript or superscript then enclose the content in curly brakets, e.g. x$^{2c}$ (x\$\^{}\{2c\}\$) and t$_{step}$ (t\$\_\{step\}\$).
+
+\begin{table}[h]
+\caption{Table of Symbols in \LaTeX}
+\label{tab:tableofsymbols}
+\begin{tabular}{|ll|ll|} \hline
+Symbol  & \LaTeX code & Symbol & \LaTeX code \\ \hline\hline
+\&  & \textbackslash\&  & 
+\$  & \textbackslash\$ \\
+``  & \`{}\`{} & 
+''  & \'{}\'{} \\
+mg~L$^{-1}$ & mg$\sim${}L\$\^{}\{-1\}\$ & 
+    & \\ 
+\hline
+\end{tabular}
+
+\end{table}
+
+\subsection{Creating equations}
 
 One of the most powerful parts of \LaTeX is how it can be used to write complex equations, with all those symbols and Greek letters! This can be done inline $y = mx + b + \epsilon$ for fairly simple equations, or set apart for more complex equations:
 
@@ -414,39 +431,17 @@ For example, here's code to generate a pretty good figure:
 
 
 
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 
 
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in file(file, "{}rt"{}): cannot open the connection}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in createDataPartition(., p = 0.8, list = FALSE): object 'maunaloa' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'maunaloa' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'maunaloa' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in eval(expr, envir, enclos): object 'maunaloa' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in is.data.frame(data): object 'maunaloa' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in summary(model): object 'model' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in predict(., test.data): object 'model' not found}}
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in mean((pred - obs)\textasciicircum{}2, na.rm = na.rm): object 'predictions' not found}}\end{kframe}
-\end{knitrout}
-
-In the case of Figure \ref(fig:maunaloa), we can a create a figure that has all of the characteristics listed above, except perhaps ADA. Creating a "alt text" for the figure is something we might want to consider. 
+In the case of Figure~\ref{fig:co2-graphic}, we can a create a figure that has all of the characteristics listed above, except perhaps ADA. Creating a "alt text" for the figure is something we might want to consider -- For now a decent caption about what the reader is seing is super helpful. 
 
 \begin{figure}
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/maunaloa-1} 
 
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in ggplot(train.data, aes(decimal.date, average)): object 'train.data' not found}}\end{kframe}
 \end{knitrout}
-\caption{Carbon Dioxide Concentrations (Mauna Loa, HI). Source: Scripps/NOAA.}
+\caption{Carbon Dioxide Concentrations (Mauna Loa, HI). Data demonstrate the CO$2$ concentrations are increases, but that a seasonal impact is embedded in the long-term trend. Source: Scripps/NOAA.}
 \label{fig:co2-graphic}
 \end{figure}
 
@@ -460,7 +455,7 @@ Some text
 \end{minipage}
 }
 
-\subsection{ Cross-References, Citations, and Glossaries}
+\subsection{Cross-References, Citations, and Glossaries}
 
 \subsubsection{Cross-References}
 
@@ -492,9 +487,9 @@ This is a definition and the word is use in an glossary, e.g. \gls{peat}. \Gls{p
 \end{definition}
 
 
-\chapter{Chapter Title}
+\chapter{Template Chapter Title}\label{ch:template}
 
-\chapterauthor{Chapter Author Name}
+\chapterauthor{Chapter Author}
 
 \footnote{Statement of Contributions-- For example, ``The chapter was first drafted by Marc Los Huertos (2021). The author recieved valuable feedback from X, and Y and Z to improve the chapter. Slater revised the chapter in 2022 with suggestions from Cater.'' Note: I am still working on the formatting for this to improve it.}
 
@@ -502,15 +497,18 @@ This is a definition and the word is use in an glossary, e.g. \gls{peat}. \Gls{p
 
 \subsection{Subsection Headings} % Avoid putting text between subsection and subsubsection headings. Not applicable if you don't have subsections!
 
-Some text here... if you cut and paste, be sure to make sure you don't include formatted characters outside the ASCII values. See Author Guide\ref{ch:guide}.
+Some text here...The hierarchy structure is described in the Author Guide, Section~\ref{sec:settingup} -- NOTE: This is a section cross reference.
 
-\subsubsection{Optional Subsubsection Headings} % Again try to avoid putting text between the subheadig and the subsubheading to main a structural consistency.
+if you cut and paste, be sure to make sure you don't include formatted characters outside the ASCII values. See Author Guide, Section~\ref{sub:mathchar}. NOTE: This is a subsection cross reference.
 
-some text here....
+
+\subsubsection{Optional Subsubsection Headings}\label{subsub:optionalsubsub} % Again try to avoid putting text between the subheadig and the subsubheading to main a structural consistency.
+
+some text here.... and a subsubsection cross reference (See Section \ref{subsub:optionalsubsub}).
 
 \section{Goals of this template}
 
-This template will NOT teach you how to use \LaTeX! To accomplish that, we'll rely on some great online resources that you can find on in Chapter \ref{ch:guide}. 
+This template will NOT teach you how to use \LaTeX! To accomplish that, we'll rely on some great online resources that you can find on in Chapter~\ref{ch:guide}. 
 
 Instead this section of the document is designed to demonstrate how our textbook will look, feel, and ultimately how we contribute to the project.
 
@@ -561,7 +559,7 @@ Generally, there are many environmental trends in Asia \citep{imura2005urban}.
 \citet{imura2005urban} describes the how urbanization has affected the hydrology of East Asia. 
  
 
-\chapter{Title...}
+\chapter{Plastic}
 
 \chapterauthor{Nora}
 
@@ -569,6 +567,14 @@ $\rightarrow$
 
 chekcing on this today, 4-020-2021
 pull request test 1.2 
+
+changes at 3 pm, 4-1-21
+
+changes at 3:20 pm, 4-1-21
+
+changes at 3:29 pm 4-1-21
+
+
 
 \section{What the Polar Vortex and why do we care?}
 
@@ -673,10 +679,9 @@ Figure~\ref{fig:maunaloa2}
 
 \begin{figure}
 \begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+\includegraphics[width=\maxwidth]{figure/maunaloa3-1} 
 
-
-{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error in ggplot(train.data, aes(decimal.date, average)): object 'train.data' not found}}\end{kframe}
 \end{knitrout}
 \caption{Carbon Dioxide Measure on Mauna Loa, HI}
 \label{fig:maunaloa2}
@@ -729,7 +734,65 @@ The critical zone as a concept and as a material space pushes us to think of the
 
 \section{Hydrologic Aspects}
 
+\subsection{Subsurface Hydrology}
+
+As water percolates into the soil or flows in the pour space below the surface waters it becomes part of the ground water. The study of this water might be called subsurface hydrology or ground water hydrology or hydrogeology. 
+
+There are two main areas of subsurface waters: saturated zone and unsaturated zone (Figure~\ref{fig:groundwater}).
+
+The saturated zone is the region where all the spaces between the particles are filled by water. The surface of the saturated zone is the water table. 
+
+The unsaturated zone is also called the vadose zone has some percentage of the pour spaces have air. The vadose zone also includes an area called the capillary fringe. Because of the surface tension of water, water is found in between particles above the water table and this zone is referred to as the capillary fringe. 
+
+\begin{figure}
+\includegraphics{images/critical-zone/groundwater}
+\caption{Diagram of Ground Water. }
+\label{fig:groundwater}
+\end{figure}
+
+\subsection{Saturated Zone}
+
+\subsubsection{Aquifers and Aquitards}
+
+\subsubsection{Confined and Unconfined Aquifers}
+
+\subsubsection{Ground Water Flow}
+
+TAKE A LOOK at some flow net sketches that will help clarify the relationships between aquifer matrix, and groundwater movement.
+
+In general, water flow is driven by potential energy, e.g.  where water flows down hill, driven by gravity. If water flows from point A to point B, the the potential energy for the flow is the height of the water at point A minus the height at point B, which can be symbolized as $dl$. The head potential is the heigh difference divided by the distance between the two points.  
+
+DARCY'S LAW
+
+\begin{equation}
+Q = KIA
+\end{equation}
+
+In 1856, Henry Darcy studied the movement of water through porous material. He determined an equation that described groundwater flow. The following description tell how Darcy determined his equation:
+
+A horizontal pipe filled with sand is used to demonstrate Darcy's experiment. Water is applied under pressure through end A, flows through the pipe, and discharges at end B. Water pressure is measured using piezometer tubes (thin vertical pipes installed at each end of the horizontal pipe). The difference in hydraulic head (between points A and B) is dh (change in height). Divide this by the flow length (i.e. the distance between the two tubes), dl, and you get the hydraulic gradient ( I ).
+
+The velocity of groundwater is based on hydraulic conductivity (K), as well as the hydraulic head (I). Therefore, the equation determined by Darcy to describe the basic relationship between subsurface materials and the movement of water through them is Q = KIA where Q is the volumetric flow rate (or discharge) and A is the area that the groundwater is flowing through. This relationship is known as Darcy’s law.
+
+DISCHARGE
+%* symbol-Q * units-volume/time EX. (m^3/day) * volume of water flowing through an aquifer per unit time * FIND WITH DARCY'S LAW Q = KIA
+
+AREA OF FLOW
+%* symbol-A * units-distance squared EX. (m^2) * Cross-sectional area of flow. (i.e. aquifer width x thickness)
+
+Now, rearrange the equation to Q/A = KI, which is known as the flux (v), which is an apparent velocity. Actual groundwater velocity is lower than that determined by Darcy, and is called Darcy Flux (vx)
+
+FLUX
+%* symbol-v * units-distance/time EX. (m/sec) * v=Q/A=KI * this is a velocity measure and gives the IDEAL velocity of groundwater (assumes that the water molecules can flow in a straight line through the subsurface). * this is ideal because it doesn't account for tortuosity of flow paths (this means that the water molecules actually follow a very windy path in an out of the pore spaces and so travel quite a bit slower in reality than the flux would indicate).
+
+DARCY FLUX
+%* symbol - vx * units - distance/time EX. (m/sec) * vx = Q/An = KI/n * This is the ACTUAL velocity of qroundwater and DOES account for tortousity of flow paths by including porosity in its calculation.
+
+Darcy's law is used extensively in groundwater studies. It can help answer important questions such as what direction an aquifer pollution plume is moving in, and how fast it is traveling
+
 \subsection{The Vadose Zone}
+
+The vadose zone is the 
 
 Jeji is a volcanic island is located some XX km south of the Korean Penisula. Water runs off the steep slopes quickly and water supplies are limited on the island. To adddress this...\citet{lee2017fifty}.
 
@@ -782,6 +845,60 @@ infiltration/pollution, groundwater recharge, flow of river basins, runoff
 Higher risk of flooding and droughts
 
 \section{Conclusion \& Prospect of Sustainable Urbanization/Land Use Change}
+
+
+\chapter{Deforestation}\label{ch:deforestation}
+
+\chapterauthor{Xinlan Chen}
+
+\footnote{Statement of Contributions-- For example, ``The chapter was first drafted by Marc Los Huertos (2021). The author recieved valuable feedback from X, and Y and Z to improve the chapter. Slater revised the chapter in 2022 with suggestions from Cater.'' Note: I am still working on the formatting for this to improve it.}
+
+\section{Section Heading}% Avoid putting text between section and subsection headings.
+
+\subsection{Subsection Headings} % Avoid putting text between subsection and subsubsection headings. Not applicable if you don't have subsections!
+
+
+
+
+
+\section{Overall}
+Deforestation is not a small issue in East Asia, since most countries here depend on the money source they got from the wood export industry. There are many issues that could be caused by deforestation with but not limited to air pollution, water pollution and climate change. Upon having looked at all the presentations that people make, I realized that most East Asia countries that was originally covered mostly in forest have significantly reduced in their forest coverage, and nevertheless, natural is punishing them for that. Over-logging is when the level of deforestation exceeds the self-sustaining state of the ecosystem, leading to desertification. Excessive cutting of trees can bring a series of troubles and problems. Many countries have started having regulations on business regarding wood exports and forests protection, more have to be done in order to resolve the issue that people have done in the past that resulted in deforestation. 
+
+\section{Damage Done by Deforestation – Example of China}
+After soil erosion and deforestation, the bare land cannot withstand the wind and rain. On sunny days, due to the sun exposure, the ground temperature rises, the process of organic matter decomposition into soluble mineral elements is accelerated; On rainy days, rainwater is washed directly, carrying the fertile topsoil along with mineral elements into rivers. It is estimated that more than 5 billion tons of soil are washed into rivers in China every year. The siltation of quicksand blocked the channel of the reservoir. Sediment concentration in the Yellow River in China is the highest in the world, and when floods come, water and sand are equally divided. Due to the deposition of quicksand, the riverbed in some places in the lower reaches of the Yellow River is 12 meters higher than the land beyond the embankment and even higher than the city wall of Kaifeng City, posing a serious threat to the safety of people's lives and property.
+The deteriorate of environment always accompanies with frequent disasters. The forest coverage rate in Wanning County, Hainan Province, used to be as high as 63 percent. Due to forest regulation, there was no drought in the 1940s and 1950s. Since then, natural disasters have been on the rise. From the 1960s to the 1970s, droughts hit an average of six out of every ten years, cutting the flow of 21 rivers, reducing the output of three-quarters of farmland and drying up 25 reservoirs. In particular, the destruction of the forest, so that some rare animals lost their breeding base. Animals there can't survive. China's Hainan slope deer, South China tiger, black - crested gibbon and other precious animals are endangered due to habitat destruction. There is less oxygen supply when deforestation issue is present, consequently there is more carbon dioxide and less natural filters. The ecological environment was forcibly occupied, and the law of ecological circulation was destroyed. The temperature can change, causing unstable changes in the climate.
+
+\section{Overall Losses – Example of Indonesia and Thailand}
+In the past decade, Southeast Asia has suffered the greatest loss of forest area, with a net loss of more than 900,000 hectares a year. Trees are widely used as materials in construction, decoration, paper making, metallurgy, chemical industry. Used in paper making, as furniture, chopsticks and other main daily necessities, wood floor, plywood, ceiling and other industrial supplies. Cutting down trees so that people can use the land in their own benefits. To sum up, people cut down trees mainly for their own needs.
+	In some parts of Thailand, inspectors inspect thousands of smuggled trucks at roadblocks every day. Instead of guns and drugs, they are carrying wood. Thailand, once a major teak producer in the world, is now on the verge of disappearing its forest resources, and most of the forest areas have become a mess of tree stumps. According to government statistics, Thailand's forest cover has almost halved in two decades. In 1961, it still accounted for 53\% of China's forest areas, and in 1981, it only accounted for 28\%. Some experts believe that the actual forest coverage is much less at present. According to the latest survey report of the United Nations, in South Asia, Southeast Asia and the Pacific Islands, forests are disappearing at the rate of 12500 hectares per day, that is, 4.5 million hectares per year. The report also points out that Indonesia, the largest producer of tropical hardwood in the world, loses more than 1.2 million hectares of forest land every year. Thailand is more serious, with an annual deforestation of 800000 hectares, while the land area of this country is only one fourth that of Indonesia. The large-scale disappearance of forests has caused climate change and the death of wild animals and caused ecological disasters. In Thailand, 42 people died of floods in 1979. If effective measures to protect wildlife areas are not formulated, wild elephants may disappear in 30-40 years. Another reason for the destruction of forests is that mountain tribes in Thailand still carry out primitive farming. They cut down trees to burn wasteland and clear land for farming. According to the United Nations survey, 70\% of the forests in the north have been destroyed. Online Thailand has changed from a major log exporter to an importer, with an annual cost of US \$4400 in foreign exchange.
+	Since 1968, Thailand has divided nearly half of the country's forests into more than 500 leased plots for logging. The annual deforestation rate of Southeast Asian countries is relatively high, and the annual reduction of forest area is increasing year by year. Indonesia has increased from 600000 hectares before the 1990s to 1084000 hectares between 1990 and 1995. At the same time, Thailand increased from 244000 ha to 329000 ha, Malaysia from 255000 ha to 400000 ha, Philippines from 91000 ha to 262000 ha, Myanmar from 102000 ha to 387000 ha. Compared with the period before the 1990s, the annual average amount of logging in these countries increased by one cup in the first half of the 1990s, and even tripled in some countries. Since Vietnam's reform and opening up, due to a large number of logging and fire, the forest area has also been greatly reduced. From 1990 to 1995, a total of 1.5 million hectares of forest were lost, that is, 26000 hectares per year. In recent years, four of the six countries with the most deforestation in the world are Southeast Asian countries. Their average annual felling rates are 513300 acres in Thailand, 400500 acres in Myanmar, 396000 acres in Malaysia and 316100 acres in the Philippines. From 1969 to 193, about 6000 square kilometers of forests, swamps and grasslands were opened up for agricultural use by immigrants in Indonesia. Although forest is a renewable resource, its growth cycle is decades or even hundreds of years. For a long time, a large number of forests have been cut down in Southeast Asia, but the work of forest restoration and afforestation has not been given due attention. The speed of forest restoration is far behind the speed of deforestation, resulting in the decrease of forest area year by year.
+
+\section{Correlation Between Deforestation and Pandemic}
+Deforestation has led to more outbreaks of human infectious diseases, and in 1997, in Indonesia, a haze shrouded the rainforests, an area the size of Pennsylvania was burned to promote agriculture, and droughts exacerbated the fires. Under the smog, the trees are unable to bear fruit, leaving local fruit bats with no choice but to fly elsewhere in search of food, and carry with them a deadly disease. Soon after the bats took up residence in the trees in the Malaysian orchards, nearby pigs began to get sick -- probably from eating fallen fruit eaten by the bats, and local pig farmers also began to get sick. By 1999, 265 people had severe encephalitis and 105 had died. This was the first known case of Nipah virus in humans, and since then there have been a series of repeated outbreaks across Southeast Asia. Such infectious diseases are usually confined to wild animals but are spreading to areas where forests are being cleared rapidly. Human infections vary from asymptomatic to fatal encephalitis. Infected people initially develop flu-like symptoms: fever, headache, muscle pain, vomiting and sore throat. This may be followed by dizziness, lethargy, confusion, and neurological signs that indicate acute encephalitis. Some people may also develop atypical pneumonia and serious respiratory problems, including acute respiratory distress. In severe cases, encephalitis and epilepsy develop, leading to coma within 24 to 48 hours. The time between infection and onset of symptoms ranges from four to 45 days. Most acute encephalitis survivors who recovered from it are left with residual neurological consequences, such as persistent seizures and personality changes. A small number of people recover and relapse or develop delayed encephalitis. Over the long term, persistent neurological dysfunction has been observed in more than 15\% of the population. The case mortality rate is estimated at 40\% to 75\%. Over the past two decades, scientific evidence has mounted that deforestation sets off a complex chain reaction that sets the stage for a host of deadly pathogens to spread to humans, like Nipah and Lassa viruses, as well as the parasites that cause malaria and Lyme disease. Today, large areas of the Amazon rainforest, parts of Africa and Southeast Asia are still burning, and experts are concerned about the health of people living on the edge of deforestation. They also worry that the next serious pandemic could emerge from the planet's forests. Researchers have identified the correlation between malaria and deforestation, which kills more than a million people a year and is mainly transmitted by the malaria parasite carried by mosquitoes.
+
+\section{Data Proving the Damage of Deforestation as a Broader Picture and Policy Implemented}
+In Southeast Asia, the area of forest is gradually decreasing, and the forest coverage rate is decreasing due to the migration and reclamation, deforestation, expansion of farmland, backward farming methods and large-scale commercial forest development. Before the 1970s, the forest coverage rate of Indonesia, Cambodia, Laos and Brunei was as high as 70\%, that of Myanmar and Malaysia was 66\%, and that of Vietnam, Philippines and Thailand was less than 50\%. By 1995, the forest coverage of these countries had decreased significantly, to 55.7\% in Cambodia, 41.3\% in Myanmar and 47.7\% in Malaysia. 60.6\% in Indonesia, 22.8\% in Thailand and 22.7\% in the Philippines. Forest is the habitat of animals. With the decrease of forest area, the habitat of animals and plants also decreases.
+	The rate of net loss is significantly lower than the annual loss of 2.4 million hectares during the period 1990-2000. Despite a net increase in forest area reported at the regional level, the rate of deforestation remains high in many countries. In the past decade, Southeast Asia has suffered the greatest loss of forest area, with a net loss of more than 900,000 hectares a year. However, the rate of net loss is significantly lower than the annual loss of 2.4 million hectares during the period 1990-2000. Overall, the Asia and Pacific region lost 700,000 hectares of forest per year in the 1990s but gained 1.4 million hectares per year between 2000 and 2010. This is largely the result of China's massive reforestation efforts, which saw the country's forest area increase by 2 million hectares a year in the 1990s and an average increase of 3 million hectares a year since 2000. As article 8 of the Forest Law of the People's Republic of China stipulates that the state shall implement the following protective measures for forest resources: (1) implement quota cutting for forests, encourage afforestation, close mountains for forest cultivation, and expand the area covered by forests; (2) to give economic support or long-term loans to collectives and individuals for afforestation and forest cultivation in accordance with the relevant provisions of the state and local people's governments; (3) To advocate the comprehensive utilization and economical use of wood and encourage the development and utilization of wood substitutes; (4) Collect forest raising fees and use them exclusively for afforestation and forest raising; (5) In the departments of coal and paper making, a certain amount of funds shall be set aside according to the output of coal, wood pulp and paper to be used exclusively for the construction of pit timber and timber for paper making; (6) Establishing a forestry fund system. The State shall establish a forest ecological benefit compensation fund to be used for the construction, upbringing, protection and management of protection forests that provide ecological benefits and forest resources and trees with special uses. Forest ecological benefit compensation funds must be earmarked for special purposes and may not be misused for other purposes. Specific measures shall be formulated by the State Council. Bhutan, India, the Philippines and Vietnam also reported an increase in forest cover over the past 10 years. Despite a net increase in forest area reported at the regional level, the rate of deforestation remains high in many countries. In the past decade, Southeast Asia has suffered the greatest loss of forest area, with a net loss of more than 900,000 hectares a year. China, India and Vietnam have all set targets for large-scale reforestation, as well as incentive programs to encourage small farmers to plant more trees. China plans to increase its plantation area by 50 million hectares to 23 percent by 2020. If the current rate of afforestation continues, it may be possible to achieve this goal by 2015. India has set a goal of 33 percent forest and tree cover by 2012. Forests, other woodlands or land covered with trees accounted for about 25 percent of India's land area in 2010, according to the Global Forest Resources Assessment. The area of unknown rows of trees planted and other "trees outside the forest" should be included in this percentage. The government's goal was to restore forest cover to 43 per cent by 2010, and according to information provided to the Global Forest Resources Assessment, this goal has been met.
+
+\section{Suggestions}
+(1) Strengthening the awareness of forest resources protection
+The human living environment is increasingly bad, the ecological environment problem has become the focus of globalization. The destruction of forest resources leads to soil erosion, land desertification, poor air quality and even harm to human health. We should realize the importance of forest resources, strengthen the awareness of forest resources protection, the protection of forest resources is everyone's responsibility, starting from ourselves, fundamentally accept and support the forest resources protection policy, dare to report illegal logging behavior, participate in the protection of wild animals and plants. On the basis of not destroying, afforestation can promote the healthy and sustainable development of forestry, mobilize the enthusiasm of the broad masses of people, effectively protect forest resources to the greatest extent, improve the ecological environment, and enable people to live in harmony with nature.
+(2) Strengthening the construction of forest resources management institutions
+The management and protection of forest resources should be based on the principle of sustainable development and operation, and rational harvesting should be carried out according to the quality and structure of forest resources. Forest resources management agencies should be established and the management system should be improved. According to the actual situation of forest resources, forest management and protection stations should be set up reasonably, and the management and protection personnel should be trained to improve their management and protection ability and legal awareness of forest resources. We should reasonably formulate quotas for forest cutting, conduct management and supervision over the issuance of cutting licenses in accordance with the Forest Law, ensure that there are laws to follow for cutting with vouchers, supervise the progress and management of cutting, and resolutely prohibit arbitrary cutting. Forestry departments should also adapt to the requirements of the current social development situation, under the trend of rapid development of information, increase investment to improve hardware and software infrastructure, establish a perfect information system, improve configuration facilities, improve work efficiency. The perfect forest resources information management system, standardized management data collection and analysis, improve the level and quality of monitoring, scientific management and protection of forest resources.
+(3) Strengthening control of diseases and insect pests of trees and protection against forest fires
+Natural disasters of forest resources mainly have two aspects, one is pests and diseases, the other is forest fires. These two kinds of harm to the forest destruction and loss are huge. As for the prevention and control of diseases and insect pests, the quarantine of quarantine forest plants and the prevention and control of forest diseases and insect pests should be strengthened. The Quarantine Law should be strictly implemented to prevent the introduction of harmful organisms and put an end to the man-made spread of pests. Monitoring and forecasting of forest diseases and insect pests, taking the initiative to prevent disasters and effectively control the scope and harm of diseases and insect pests; On the other hand, the prevention and control of forest fires has always been the top priority of forest resource management. For a long time, the need to constantly, vigorously adhere to the propaganda of fire prevention work, multimedia, multi-faceted personnel into the forest to strengthen the awareness of fire prevention, has been unable to relax vigilance. Implement the fire prevention responsibility of relevant units, control fire source management, carry out regular joint prevention of responsible households, establish and perfect fire monitoring and forecast system, strengthen the allocation of fire prevention equipment, fundamentally control fire sources, timely control when fire occurs, and reduce the loss of forest resources.
+(4) Improve the utilization rate of forest resources
+The utilization of forest resources is mainly the development of forestry, and the industrialization of forestry development is its development trend. In the management and management of forestry, we should first cultivate forest resources fundamentally, increase the intensity of forest cultivation, improve the quality of forest resources and improve the ecological environment. On this basis, forestry industrialization, technological production technology improvement, research and development of new wood processing industry, adjust the direction and structure of wood products. At the same time, the comprehensive development of forest resources, the development of breeding, planting, and related processing industries, in many ways to improve the maximum utilization rate of forest resources.
+
+
+\chapter{Invasive Species}
+
+\chapterauthor{Soliel}
+
+\footnote{Statement of Contributions-- For example, ``The chapter was first drafted by Marc Los Huertos (2021). The author recieved valuable feedback from X, and Y and Z to improve the chapter. Slater revised the chapter in 2022 with suggestions from Cater.'' Note: I am still working on the formatting for this to improve it.}
+
+\section{Section Heading}% Avoid putting text between section and subsection headings.
+
 
 
 \chapter{Nuclear Power and Nuclear Waste}
